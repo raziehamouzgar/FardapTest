@@ -1,3 +1,4 @@
+ //تعریف یک کاراکتر رندوم ازبین حروف الفبا
  function getRandomAlphabet() {
     let alphabet = 'abcdefghijklmnopqrstuvwxyz';
     let randomIndex = Math.floor(Math.random() * 26);

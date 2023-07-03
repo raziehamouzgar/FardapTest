@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const WatermarkedImage = ({ imageUrl, watermarkText, blackWight }) => {
+const WatermarkedImage = ({ imageUrl, watermarkText, blackWhite }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const WatermarkedImage = ({ imageUrl, watermarkText, blackWight }) => {
   return (
     <canvas
       ref={canvasRef}
-      className={`w-2/3 ${blackWight ? "grayscale" : null}`}
+      className={`w-2/3 ${blackWhite ? "grayscale" : null}`}
       id="imagess"
     />
   );

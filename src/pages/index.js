@@ -6,13 +6,13 @@ import MagnifierImage from "./MagnifierImage";
 
 export default function Home() {
   const [logo, setLogo] = useState([]);
-  const [blackWight, setBlackWight] = useState(false);
+  const [blackWhite, setBlackWhite] = useState(false);
   const [magnifier, setMagnifier] = useState(false);
   const [watermarkText, setWatermarkText] = useState("fardap");
 
   const fetchLogo = async () => {
     let randomChar = getRandomAlphabet();
-
+    //اضافه کردن کاراکتر رندوم(ازبین حروف الفبا) به آخر api
     const config = {
       method: "get",
       maxBodyLength: Infinity,
@@ -26,7 +26,7 @@ export default function Home() {
       const response = await axios.request(config);
       if (response.data.length > 0) {
         setLogo(response.data[0]);
-        setBlackWight(false);
+        setBlackWhite(false);
       }
     } catch (error) {
       console.log(error);
@@ -40,21 +40,22 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center justify-center gap-3">
       {magnifier ? (
-        <MagnifierImage imageUrl={logo?.image} blackWight={blackWight} />
+        <MagnifierImage imageUrl={logo?.image} blackWight={blackWhite} />
       ) : (
         <WatermarkedImage
           imageUrl={logo?.image}
           watermarkText={watermarkText}
-          blackWight={blackWight}
+          blackWight={blackWhite}
         />
       )}
 
       <button className="px-3 py-1 bg-cyan-500 rounded-md" onClick={fetchLogo}>
         reload
       </button>
+
       <button
         className="px-3 py-1 bg-cyan-500 rounded-md"
-        onClick={() => setBlackWight(!blackWight)}
+        onClick={() => setBlackWhite(!blackWhite)}
       >
         Black & White
       </button>
